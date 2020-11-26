@@ -1,0 +1,154 @@
+
+
+
+
+int partition(int *a, int l, int r) [l,r] // O(n)
+{
+	int kindex = r;  // 
+	int prev = l - 1;  //  ++prev  
+	for(int i = l; i < r; i++)
+	{
+		if(a[i] < a[kindex])
+		{
+			if(++prev != l)
+			{
+				swap(a[prev],a[l]);
+			}
+		}
+	}
+	//     kindex
+	//      4
+	++prev;
+	swap(a[prev],a[lindex]);
+	return prev;
+}
+void func(int *a, int n, int k)
+{
+	int l = 0;
+	int r = n - 1;
+	int index = partition(a,l,r);
+	while(index != k - 1)
+	{
+		if(index < k - 1)
+		{
+			 l = index + 1;
+			 index = partition(a,l,r);
+		}
+		else 
+		{
+			r = index - 1;
+			index = partition(a,l,r);
+		}
+	}
+}
+
+
+
+
+void func(vector<int>& vip, int k)
+{
+	vector<int> scores(100,0);
+	for(int i = 0; i < vip.size(); i++)
+	{
+		scores[vip[i]]++;
+	}
+	for(int i = 99; i >= 0; i--)
+	{
+		if(scores[i] >= k)
+		{
+			cout <<"第k位的得分" <<  i << endl;
+			return;
+		}
+		k -= scores[i];
+	}
+}
+
+
+
+int longer(string& str1, string& str2)
+{
+	int n1 = str1.size();
+	int n2 = str2.size();
+	//int f[10000][10000];
+	vector<vector<int>>f(n1 + 1, vector<int>(n2 + 1,0)):
+	
+	/*
+	for(int i = 0; i < n2; i++)
+	{
+		if(str1[0] == str2[i])
+			f[0][i] = 1;
+	}
+	for(int i = 0; i < n1; i++)
+	{
+		if(str2[0] == str1[i])
+			f[i][0] = 1;
+	}
+	*/
+	
+	for(int i = 1; i <= n1; i++)
+	{
+		for(int j = 1; j <= n2; j++)
+		{
+			if(str[i - 1] == str[j - 1])
+			{
+				f[i][j] = max(f[i - 1][j - 1] + 1, f[i][j]);
+			}
+			f[i][j] = max(f[i][j], f[i][j - 1]);
+			f[i][j] = max(f[i][j], f[i - 1][j]);
+	
+		}
+	}
+	
+	return f[n1][n2];
+}
+
+
+Button 按钮控件，在程序中显示按钮
+Canvas 画布空间
+Checkbutton  多选框控件
+Entry 输入控件
+Frame 框架控件
+Label 标签控件
+Listbox 列表框控件
+Menubutton 菜单栏控件，用于显示菜单项
+Menu 菜单控件
+Message 消息控件
+
+
+
+
+将 数据库中的数据 读取到文本文档
+
+# def get_loan_number(file_txt):
+#     conn = pymysql.connect(
+#         host="localhost",
+#         user="root",
+#         passwd="123456",
+#         db="testdb",
+#         charset="utf8"
+#     )
+#     # print("写入中，请等待-----------\n")
+#     cursor = conn.cursor()
+#     sql = "select * from user "
+#     cursor.execute(sql)
+#     number = cursor.fetchall()
+#     fp = open(file_txt, "w")
+#     loan_count = 0
+#
+#     for loanNumber in number:
+#         loan_count += 1
+#         fp.write(str(loanNumber) + "\n")
+#     fp.close()
+#     cursor.close()
+#     conn.close()
+#     print("写入完成，共写入%d条数据 !" % loan_count)
+#
+#
+# if __name__ == "__main__":
+#     file_txt = "F:\slow.txt"
+#     get_loan_number(file_txt)
+
+
+
+
+
